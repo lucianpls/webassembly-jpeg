@@ -123,11 +123,11 @@
               buf32[iDst] = bytes | alpha;
               let next = bytes >>> 24; // R
               bytes = source[iSrc + 1]
-              buf32[iDst + 1] = next | ((bytes & 0xffff) << 8) | alpha;
+              buf32[iDst + 1] = next | bytes << 8 | alpha;
               next = bytes >>> 16; // GR
               bytes = source[iSrc + 2]
-              buf32[iDst + 2] = next | ((bytes & 0xff)) << 16 | alpha;
-              buf32[iDst + 3] = (bytes >>> 8) | alpha;
+              buf32[iDst + 2] = next | bytes << 16 | alpha;
+              buf32[iDst + 3] = bytes >>> 8 | alpha;
           }
 
           displayZone.ctx.putImageData(displayZone.imageData, 0, 0);
