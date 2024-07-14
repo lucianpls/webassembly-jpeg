@@ -115,7 +115,7 @@
 
           // Copy directly from the module memory to imageData
           // read from view of wasm image.data as Uint32 array
-          let source = new Uint32Array(Module.HEAP8.buffer, image.data, len)
+          let source = new Uint32Array(Module.HEAP8.buffer, image.data, len / 4 * 3)
 
           // read 3 int, write 4 per loop, assumes len is a multiple of 4
           for (let iSrc = 0, iDst = 0; iDst < len; iSrc += 3, iDst += 4) {
